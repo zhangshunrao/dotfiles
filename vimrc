@@ -9,6 +9,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " ==================== Bundle =====================
+Bundle 'IndexedSearch'
+Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'python-rope/ropevim'
 Bundle 'sjl/gundo.vim'
@@ -59,10 +61,9 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
-" Colorscheme
-set background=dark
-"colorscheme solarized
+set background=dark " Colorscheme
 colorscheme molokai
+"colorscheme solarized
 
 " Back Normal Mode
 inoremap jk <ESC>
@@ -73,11 +74,14 @@ set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$'}
 
 " File Tree
-nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <silent> <leader>f :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules'] "ignore files in NERDTree
+
+" Class Tree
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " File
 nnoremap <silent> <leader>w :wa<CR>
