@@ -1,3 +1,9 @@
+" ================================================
+" Cano's Vim Config
+" version: alpha 0.2
+" Blog: http://cano.xyz/
+" ================================================
+ 
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -67,7 +73,7 @@ set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$'}
 
 " File Tree
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -102,6 +108,9 @@ let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_cache_omnifunc=0
 let g:ycm_seed_identifiers_with_syntax=1
+
+" Run Python
+nnoremap <silent> <F3> :!clear && python % <CR>
 
 " Indent
 let g:indent_guides_enable_on_vim_startup=1
