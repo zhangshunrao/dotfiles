@@ -1,1 +1,1 @@
-/home/cano/.config/nvim/init.vim
+/home/cano/.vimrc
