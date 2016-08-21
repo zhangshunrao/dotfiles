@@ -20,8 +20,13 @@ Plug 'tpope/vim-surround'                   " 修改成对符号
 Plug 'Xuyuanp/nerdtree-git-plugin'          " Git plugin for NERDTree
 Plug 'dhruvasagar/vim-table-mode',          " Table mode
             \ {'on': 'TableModeToggle'}
+Plug 'terryma/vim-multiple-cursors'         " 多点输入
+Plug 'sirver/ultisnips'                     " 模板
+Plug 'honza/vim-snippets'                   " 模板库
+Plug 'tpope/vim-fugitive'                   " Git集成
 " colors
 Plug 'altercation/vim-colors-solarized'
+
 
 call plug#end()
 
@@ -84,9 +89,23 @@ call plug#end()
     nnoremap <silent> du :UndotreeToggle<CR>
 
     " easymotion
-    nnoremap  <leader> <Plug>(easymotion-prefix)
+    nmap <leader> <Plug>(easymotion-prefix)
 
     " table-mode
     nnoremap <silent> <leader>tm :TableModeToggle<CR>
+
+    " ultisnips {{{ 
+        let g:UltiSnipsExpandTrigger="<leader><tab>"
+        let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
+        let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+        let g:UltiSnipsEditSplit="vertical"
+    " }}} 
+
+    " fugitive {{{ 
+        nnoremap <leader>gw :Gwrite<CR>
+        nnoremap <leader>gr :Gremove<CR>
+        nnoremap <leader>gm :Gmove<CR>
+        nnoremap <leader>gc :Gcommit<CR>
+    " }}} 
 
 " }}} 
