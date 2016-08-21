@@ -106,6 +106,7 @@ call plug#end()
         nnoremap <leader>gr :Gremove<CR>
         nnoremap <leader>gm :Gmove<CR>
         nnoremap <leader>gc :Gcommit<CR>
+        nnoremap <leader>gp :Gpush<CR>
     " }}} 
 
 " }}} 
