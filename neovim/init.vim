@@ -4,19 +4,36 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Plugin tables
-Plug 'bling/vim-airline'            " 状态栏增强
-Plug 'scrooloose/nerdcommenter'     " 注释增强
-Plug 'majutsushi/tagbar'            " 代码结构浏览
-Plug 'scrooloose/nerdtree'          " 文件管理器
-Plug 'kien/ctrlp.vim'               " 快速查找和打开文件
-Plug 'mattn/emmet-vim', {'for': 'html'}  " 生成HTML
+Plug 'bling/vim-airline'                    " 状态栏增强
+Plug 'scrooloose/nerdcommenter'             " 注释增强
+Plug 'majutsushi/tagbar'                    " 代码结构浏览
+Plug 'scrooloose/nerdtree',                 " 文件浏览
+            \ {'on': 'NERDTreeToggle'}
+Plug 'kien/ctrlp.vim'                       " 快速查找和打开文件
+Plug 'mattn/emmet-vim',                     " 生成HTML
+            \ {'for': 'html'}               " 生成HTML
+Plug 'Valloric/YouCompleteMe',              " 智能补全
+            \ {'do': './install.py', 'for': ['html', 'css', 'python']}
+Plug 'mbbill/undotree'                      " 历史记录
+Plug 'easymotion/vim-easymotion'            " 快速移动
+Plug 'tpope/vim-surround'                   " 修改成对符号
+Plug 'Xuyuanp/nerdtree-git-plugin'          " Git plugin for NERDTree
+Plug 'dhruvasagar/vim-table-mode',          " Table mode
+            \ {'on': 'TableModeToggle'}
+" colors
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
-
-" Basic
 " General settings {{{
-    set number
+    set scrolloff=8
+    " UI {{{
+        set background=dark
+        set number
+        set cursorcolumn
+        set cursorline
+        colorscheme solarized
+    " }}} 
 " }}}
 
 " Mappings {{{
@@ -25,20 +42,23 @@ call plug#end()
 
 	inoremap jk <ESC>
 
-	nnoremap <leader>w :wa<CR>
-	nnoremap <leader>x :x<CR>
-	nnoremap <leader>a :xa<CR>
+	nnoremap <silent> <leader>w :wa<CR>
+	nnoremap <silent> <leader>x :x<CR>
+	nnoremap <silent> <leader>a :xa<CR>
 
 	nnoremap <space> za
 
-    " Source Vimrc
-    nnoremap <leader>sv :source $MYVIMRC<CR>
+    " Source Vimrc {{{ 
+        nnoremap <leader>sv :source $MYVIMRC<CR>
+        nnoremap <leader>ev :edit $MYVIMRC<CR>
+    " }}} 
 
 	" window movement {{{
 		nnoremap <C-H> <C-W><C-H>
 		nnoremap <C-J> <C-W><C-J>
 		nnoremap <C-K> <C-W><C-K>
 		nnoremap <C-L> <C-W><C-L>
+        nnoremap <C-C> <C-W><C-C>
 	" }}}
 " }}}
 
@@ -54,13 +74,19 @@ call plug#end()
 " }}}
 
 " Plugin Settings {{{
-    " Tagbar
-    nnoremap <leader>t :TagBarToggle<CR>
+    " tagbar
+    nnoremap <silent> <leader>tt :TagbarToggle<CR>
     
-    " NERDTree {{{
-    nnoremap <leader>f :NERDTreeToggle<CR>
-    " }}} 
-    
+    " nerdtree
+    nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
+
+    " undotree
+    nnoremap <silent> du :UndotreeToggle<CR>
+
+    " easymotion
+    nnoremap  <leader> <Plug>(easymotion-prefix)
+
+    " table-mode
+    nnoremap <silent> <leader>tm :TableModeToggle<CR>
+
 " }}} 
-
-
