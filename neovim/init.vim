@@ -24,6 +24,7 @@ Plug 'terryma/vim-multiple-cursors'         " 多点输入
 Plug 'sirver/ultisnips'                     " 模板
 Plug 'honza/vim-snippets'                   " 模板库
 Plug 'tpope/vim-fugitive'                   " Git集成
+Plug 'ironcamel/vim-script-runner'
 " colors
 Plug 'altercation/vim-colors-solarized'
 
@@ -69,11 +70,15 @@ call plug#end()
 		nnoremap <C-K> <C-W><C-K>
 		nnoremap <C-L> <C-W><C-L>
         nnoremap <C-C> <C-W><C-C>
+        nnoremap <C-O> <C-W><C-O>
 	" }}}
 " }}}
 
 " Formatting {{{
-	autocmd FileType vim setlocal foldmethod=marker
+    " {{{ folding 
+        autocmd FileType vim setlocal foldmethod=marker
+        autocmd FileType python setlocal foldmethod=indent
+    " }}} 
 
 	set ts=4 sw=4 sts=4 expandtab
 " }}}
@@ -101,6 +106,9 @@ call plug#end()
 
     " table-mode
     nnoremap <silent> <leader>tm :TableModeToggle<CR>
+
+    " script-runner
+    let g:script_runner_key = '<F3>'
 
     " youcompleteme {{{ 
         " ycm-mappings {{{ 
