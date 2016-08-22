@@ -3,30 +3,64 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Plugin tables
-Plug 'bling/vim-airline'                    " 状态栏增强
-Plug 'scrooloose/nerdcommenter'             " 注释增强
-Plug 'majutsushi/tagbar'                    " 代码结构浏览
-Plug 'scrooloose/nerdtree',                 " 文件浏览
-            \ {'on': 'NERDTreeToggle'}
-Plug 'kien/ctrlp.vim'                       " 快速查找和打开文件
-Plug 'mattn/emmet-vim',                     " 生成HTML
-            \ {'for': 'html'}
-Plug 'Valloric/YouCompleteMe',              " 智能补全
-            \ {'do': './install.py', 'for': ['html', 'css', 'python']}
-Plug 'mbbill/undotree'                      " 历史记录
-Plug 'easymotion/vim-easymotion'            " 快速移动
-Plug 'tpope/vim-surround'                   " 修改成对符号
-Plug 'Xuyuanp/nerdtree-git-plugin'          " Git状态显示
-Plug 'dhruvasagar/vim-table-mode',          " 字符表格
-            \ {'on': 'TableModeToggle'}
-Plug 'terryma/vim-multiple-cursors'         " 多点输入
-Plug 'sirver/ultisnips'                     " 模板
-Plug 'honza/vim-snippets'                   " 模板库
-Plug 'tpope/vim-fugitive'                   " Git集成
-Plug 'ironcamel/vim-script-runner'
-" colors
-Plug 'altercation/vim-colors-solarized'
+" Plugin tables {{{
+
+    " 状态栏增强
+    Plug 'bling/vim-airline'
+
+    " 注释增强
+    Plug 'scrooloose/nerdcommenter'
+     
+    " 代码结构浏览
+    Plug 'majutsushi/tagbar'
+    
+    " 文件浏览
+    Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+
+    " 快速搜索打开文件
+    Plug 'kien/ctrlp.vim'
+    " 搜索命令
+    Plug 'fisadev/vim-ctrlp-cmdpalette'         
+
+    " 生成HTML
+    Plug 'mattn/emmet-vim', {'for': 'html'}
+    
+    " 智能补全
+    Plug 'Valloric/YouCompleteMe', {'do': './install.py', 'for': ['html', 'css', 'python']}
+
+    " 撤销历史操作
+    Plug 'mbbill/undotree', {'on': 'UndoTreeToggle'}
+
+    " 快速移动
+    Plug 'easymotion/vim-easymotion'
+
+    " 修改成对符号
+    Plug 'tpope/vim-surround'
+
+    " 字符表格
+    Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeToggle'}
+
+    " 多光标输入
+    Plug 'terryma/vim-multiple-cursors'
+
+    " 代码模板
+    Plug 'sirver/ultisnips'
+    Plug 'honza/vim-snippets'
+
+    " Git集成
+    Plug 'Xuyuanp/nerdtree-git-plugin'          
+    Plug 'tpope/vim-fugitive'
+    Plug 'mhinz/vim-signify'
+
+    " Python Mode as IDE
+    Plug 'klen/python-mode', {'for': 'python'}
+
+    " colors {{{
+        Plug 'altercation/vim-colors-solarized'
+        Plug 'fisadev/fisa-vim-colorscheme'
+    " }}} 
+    
+" }}} 
 
 call plug#end()
 
@@ -37,7 +71,7 @@ call plug#end()
         set number
         set cursorcolumn
         set cursorline
-        colorscheme solarized
+        colorscheme fisa
     " }}} 
 " }}}
 
@@ -95,7 +129,7 @@ call plug#end()
     " nerdtree {{{ 
         nnoremap <silent> <leader>ng :NERDTreeToggle<CR>
         let NERDTreeIgnore = ['\.pyc', '\~$', '\.swp$', '\.git']
-        let NERDTreeWinSize = 33
+        let NERDTreeWinSize = 32
     " }}}
 
     " undotree
@@ -107,8 +141,18 @@ call plug#end()
     " table-mode
     nnoremap <silent> <leader>tm :TableModeToggle<CR>
 
-    " script-runner
-    let g:script_runner_key = '<F3>'
+    " python-mode
+    nnoremap <leader>la :PymodeLintAuto<CR>
+
+    " ctrlp-cmdpaletted {{{ 
+        let g:ctrlp_cmdpalette_execute = 1  " auto execute command
+        nnoremap <silent> <leader>cp :CtrlPCmdPalette<CR>
+    " }}}
+    
+    " neocomplete {{{ 
+        let g:neocomplete#enable_at_startup = 1
+        let g:neocomplete#enable_smart_case = 1
+    " }}} 
 
     " youcompleteme {{{ 
         " ycm-mappings {{{ 
